@@ -1,0 +1,11 @@
+name: "Trigger workflow whenever a pull request is created"
+on: [pull_request]
+jobs:
+    code-quality:
+        runs-on: ubuntu-latest
+        steps:
+            - name:  "Code quality checking"
+              run: |
+                echo "Will add code check here in next challenge"
+
+            
