@@ -19,8 +19,8 @@ az ml compute create --name aml-cluster --size STANDARD_DS11_V2 --max-instances 
 
 # https://learn.microsoft.com/en-us/cli/azure/ml/data?view=azure-cli-latest
 # Create a data asset using a YAML file
-#az ml data create -f data_asset.yml # -g rg-mlops -w w-mlops
+#az ml data create -f ../experimentation/data_asset.yml # -g rg-mlops -w w-mlops
 
 # Create a data asset without a YAML file
-#az ml data create -n daiabetes-data-folder -t uri_folder -p ../experimentation/data \
+#az ml data create -n diabetes-dev-folder -t uri_folder -p ../experimentation/data \
 #    -d "Dataset created from local folder." # -g rg-mlops -w w-mlops
