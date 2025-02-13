@@ -127,3 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# AZ ML sensitive files
+src/create_service_principal.sh
