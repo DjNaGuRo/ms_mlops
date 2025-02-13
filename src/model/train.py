@@ -37,10 +37,11 @@ def get_csvs_df(path):
 
 # TO DO: add function to split data
 def split_data(df):
-    covariate_col = ['Pregnancies','PlasmaGlucose','DiastolicBloodPressure','TricepsThickness','SerumInsulin','BMI','DiabetesPedigree','Age']
+    covariate_col = ['Pregnancies', 'PlasmaGlucose', 'DiastolicBloodPressure', 'TricepsThickness', 'SerumInsulin', 'BMI', 'DiabetesPedigree', 'Age']
     target_col = 'Diabetic'
     X, y = df[covariate_col].values, df[target_col].values
     return X, y
+
 
 def train_model(reg_rate, X_train, y_train):
     # train model
@@ -62,6 +63,7 @@ def parse_args():
 
     # return args
     return args
+
 
 # run script
 if __name__ == "__main__":
