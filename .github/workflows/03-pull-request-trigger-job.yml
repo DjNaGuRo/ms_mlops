@@ -1,11 +1,37 @@
 name: "Trigger workflow whenever a pull request is created"
 on: [pull_request]
 jobs:
-    code-quality:
-        runs-on: ubuntu-latest
-        steps:
-            - name:  "Code quality checking"
-              run: |
-                echo "Will add code check here in next challenge"
+    lint:
+      name: linting
+      runs-on: ubuntu-latest
+      steps:
+      - name: Check out repo
+        uses: actions/checkout@main
+      - name: Use Python version 3.8
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.8'
+      - name: Install Flake8
+        run: |
+          python -m pip install flake8
+      - name: Run linting tests
+        run: | 
+          flake8 src/model/
+    unit_tests:
+      name: unit tests
+      runs-on: ubuntu-latest
+      steps:
+        - name: Check out repo
+          uses: actions/checkout@main
+        - name: Use Python version 3.8
+          uses: actions/setup-python@v3
+          with:
+            python-version: 3.8
+        - name: Install dependencies including Pytest
+          run: |
+            pip install -r requirements.txt
+            pytest tests/
+
+
 
             
