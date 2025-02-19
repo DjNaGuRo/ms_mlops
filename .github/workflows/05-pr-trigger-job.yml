@@ -1,0 +1,40 @@
+name: Trigger an Azure Machine Learning job on pull request
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  experiment:
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:
+    - name: Check out repo
+      uses: actions/checkout@main
+    - name: Install az ml extension
+      run: az extension add -n ml -y
+    - name: Azure login
+      uses: azure/login@v1
+      with:
+        creds: ${{secrets.AZURE_CREDENTIALS}}
+    - name: Trigger azure machine learning job in dev env
+      run: az ml job create --stream --file src/dev-ml-job.yml
+
+  production:
+    runs-on: ubuntu-latest
+    environment: prod
+    needs: experiment
+    steps:
+    - name: Check out repo
+      uses: actions/checkout@main
+    - name: Install az ml extension
+      run: az extension add -n ml -y
+    - name: Azure login
+      uses: azure/login@v1
+      with:
+        creds: ${{secrets.AZURE_CREDENTIALS}}
+    - name: Trigger azure machine learning job in prod env
+      run: az ml job create --stream --file src/prod-ml-job.yml
+
+
