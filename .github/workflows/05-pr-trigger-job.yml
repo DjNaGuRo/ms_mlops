@@ -1,7 +1,9 @@
 name: Trigger an Azure Machine Learning job on pull request
 
 on:
-  pull_request
+  push:
+    branches:
+      - main
 
 jobs:
   experiment:
