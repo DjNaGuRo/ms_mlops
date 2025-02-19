@@ -1,5 +1,5 @@
 $schema: https://azuremlschemas.azureedge.net/latest/data.schema.json
 name: diabetes-dev-folder
-description: Dataset created from local folder.
+description: Dataset created from local folder for training model in dev environment.
 type: uri_folder
 path: data/
